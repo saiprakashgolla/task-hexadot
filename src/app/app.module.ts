@@ -1,16 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
+import { RouterModule , Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { CreatePostComponent } from './create-post/create-post.component';
 
+const router : Routes = [
+  { path : '' , redirectTo:'/login', pathMatch:'full' },
+  { path : 'login' , component : LoginComponent},
+  { path : 'create-post' , component : CreatePostComponent},
+]
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    CreatePostComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(router),
   ],
   providers: [],
   bootstrap: [AppComponent]
