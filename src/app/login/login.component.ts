@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppService } from '../app.service';
+
 
 @Component({
   selector: 'app-login',
@@ -7,23 +9,34 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public email : any;
-  public password : any ;
+  public isValid:boolean = false;
+
+  @ViewChild('email') email: any;
+  @ViewChild('password') password: any;
+
+  public loginData:any={
+    email:'',
+    password:''
+  }
   constructor(
     private router : Router,
+    public appService : AppService
   ) { }
 
   ngOnInit() {
   }
-  login(){
-    if(!this.email){
-      alert("Please Provide Email");
-    }else if(!this.password){
-      alert("Please Provide Password");
-    }else{
 
-        this.router.navigate(['/create-post'])
-     
-    }
+  onLogin(){
+    this.isValid = true;
+    if(this.email.valid && this.password.valid)
+    this.appService.loginDetails(this.loginData)
+    .subscribe(
+      (response)=>{
+        console.log("gggg",response);
+        this.router.navigate(['/users'])
+        
+      }
+    )
+
   }
 }
