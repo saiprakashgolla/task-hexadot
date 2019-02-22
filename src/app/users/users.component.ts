@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -17,8 +17,14 @@ public usersPerPage:any = {
 }
   constructor(
     public appService:AppService,
-    public router: Router
-  ) { }
+    public router: Router,
+    private activatedRoute: ActivatedRoute
+  ) { 
+    this.activatedRoute.queryParams.subscribe(params => {
+      let date = params['id'];
+      console.log(date); // Print the parameter to the console. 
+  });
+  }
 
   ngOnInit() {
     this.p = 1;
@@ -47,5 +53,11 @@ public usersPerPage:any = {
     this.getUsers();
   
   }
+  userDetails(id){
+    console.log(id);
+    
+        this.router.navigate(["/users/user-details/" + id])
+        
+      }
 
 }

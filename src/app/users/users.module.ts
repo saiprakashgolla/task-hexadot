@@ -3,16 +3,19 @@ import { CommonModule } from '@angular/common';
 import { RouterModule , Routes } from '@angular/router';
 import { UsersComponent } from './users.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { AddUserComponent } from './add-user/add-user.component';
+// import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { FormsModule } from '@angular/forms';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 
 const routes : Routes = [
   
   { path: '', component:UsersComponent},
   { path: ':page', component:UsersComponent},
-  { path: 'single/add', component:AddUserComponent},
+  {path: 'user-details/:id', component:UserDetailsComponent }
+
+  // { path: 'add', component:AddUserComponent},
   // { path: 'edit-user/:id', component:AddUserComponent}
   
 ]
@@ -26,8 +29,9 @@ const routes : Routes = [
   ],
   declarations: [
     UsersComponent,
-    AddUserComponent,
-    EditUserComponent
+    // AddUserComponent,
+    EditUserComponent,
+    UserDetailsComponent
   ]
 })
 export class UsersModule { }
