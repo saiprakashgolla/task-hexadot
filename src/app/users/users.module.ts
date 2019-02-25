@@ -7,6 +7,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { FormsModule } from '@angular/forms';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 const routes : Routes = [
@@ -31,7 +32,8 @@ const routes : Routes = [
     UsersComponent,
     // AddUserComponent,
     EditUserComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    NavbarComponent
   ]
 })
 export class UsersModule { }

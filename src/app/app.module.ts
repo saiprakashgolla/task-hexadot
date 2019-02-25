@@ -9,7 +9,7 @@ import { RegisterTemplateComponent } from './register-template/register-template
 import { RegisterReactiveComponent } from './register-reactive/register-reactive.component';
 import { AppService } from './app.service';
 import { HttpClientModule } from '@angular/common/http';
-import { NavbarComponent } from './navbar/navbar.component';
+// import { NavbarComponent } from './navbar/navbar.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
@@ -21,7 +21,7 @@ import { AuthGuardService } from './auth-guard.service';
 const router : Routes = [
   // { path:'', component: AppComponent},
   // { path: '', component: AppComponent},
-  // { path : '' , redirectTo:'/registation/template', pathMatch:'full' },
+  { path : '' , redirectTo:'login', pathMatch:'full' },
   { path : 'login' , component : LoginComponent},
   { path : 'registation/template', component: RegisterTemplateComponent},
   { path : 'registation/reactive', component: RegisterReactiveComponent},
@@ -36,7 +36,7 @@ const router : Routes = [
     LoginComponent,
     RegisterTemplateComponent,
     RegisterReactiveComponent,
-    NavbarComponent,
+    // NavbarComponent,
     AddUserComponent,
    
 
