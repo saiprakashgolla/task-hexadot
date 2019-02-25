@@ -10,6 +10,10 @@ import { RegisterReactiveComponent } from './register-reactive/register-reactive
 import { AppService } from './app.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AddUserComponent } from './users/add-user/add-user.component';
+import { AuthService } from './auth.service';
+import { AuthGuardService } from './auth-guard.service';
+
 
 
 
@@ -21,7 +25,8 @@ const router : Routes = [
   { path : 'login' , component : LoginComponent},
   { path : 'registation/template', component: RegisterTemplateComponent},
   { path : 'registation/reactive', component: RegisterReactiveComponent},
-  { path: 'users',loadChildren:"./users/users.module#UsersModule"}
+  { path: 'add-user', component:AddUserComponent, canActivate: [AuthGuardService]},
+  { path: 'users',loadChildren:"./users/users.module#UsersModule",canActivate: [AuthGuardService]}
  
 ]
 
@@ -32,6 +37,8 @@ const router : Routes = [
     RegisterTemplateComponent,
     RegisterReactiveComponent,
     NavbarComponent,
+    AddUserComponent,
+   
 
   ],
   imports: [
@@ -42,7 +49,10 @@ const router : Routes = [
     HttpClientModule
     
   ],
-  providers: [AppService],
+  providers: [AppService,
+    AuthService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

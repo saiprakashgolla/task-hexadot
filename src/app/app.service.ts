@@ -34,5 +34,9 @@ export class AppService {
     return this.http.delete(this.serverUrl + "/api/users/"+id)
 
   }
+  userDetails(id) {
+    return this.http.get(this.serverUrl + "/api/users/"+id)
+
+  }
 
 }

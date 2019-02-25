@@ -10,7 +10,8 @@ import { AppService } from '../app.service';
 })
 export class LoginComponent implements OnInit {
   public isValid:boolean = false;
-
+  public token:any;
+  
   @ViewChild('email') email: any;
   @ViewChild('password') password: any;
 
@@ -24,6 +25,17 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.token = localStorage.getItem('token')
+    console.log(this.token);
+    
+
+    if(this.token){
+      this.router.navigate(['/users'])
+    }
+    else {
+      this.router.navigate(['/login'])
+    }
   }
 
   onLogin(){
@@ -31,8 +43,9 @@ export class LoginComponent implements OnInit {
     if(this.email.valid && this.password.valid)
     this.appService.loginDetails(this.loginData)
     .subscribe(
-      (response)=>{
-        console.log("gggg",response);
+      (response:any)=>{
+        console.log("gggg",response.token);
+        localStorage.setItem('token',response.token);
         this.router.navigate(['/users'])
         
       }
