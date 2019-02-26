@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AppService } from '../app.service';
 import { Router } from '@angular/router';
+import { MessageService } from '../message.service';
 
 
 
@@ -26,7 +27,8 @@ export class RegisterTemplateComponent implements OnInit {
 
   constructor(
     public appService : AppService,
-    public router : Router
+    public router : Router,
+    private messageService : MessageService,
   ) { }
 
   ngOnInit() {
@@ -51,5 +53,17 @@ export class RegisterTemplateComponent implements OnInit {
       }
     )
   }
+  sendMessage(): void {
+    // send message to subscribers via observable subject
+    this.isValid = true;
+    if(this.email.valid && this.password.valid && this.userDetails.email && this.userDetails.password && this.userDetails.firstName && this.userDetails.lastName && this.userDetails.mobileNumber)
+   
+    this.messageService.sendMessage(this.userDetails.firstName)
+    // this.router.navigate(['/login'])
+    }
+    clearMessage(): void {
+      // clear message
+      this.messageService.clearMessage();
+      }
 
 }

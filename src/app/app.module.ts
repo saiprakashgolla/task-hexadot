@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
+import { HeaderComponent } from './header/header.component';
+import { MessageService } from './message.service';
 
 
 
@@ -38,6 +40,7 @@ const router : Routes = [
     RegisterReactiveComponent,
     // NavbarComponent,
     AddUserComponent,
+    HeaderComponent,
    
 
   ],
@@ -51,7 +54,8 @@ const router : Routes = [
   ],
   providers: [AppService,
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
