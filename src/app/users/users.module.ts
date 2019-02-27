@@ -8,13 +8,16 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { FormsModule } from '@angular/forms';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { NavbarComponent } from './navbar/navbar.component';
+// import { AutoCompleteFilterComponent } from './auto-complete-filter/auto-complete-filter.component';
+
 
 
 const routes : Routes = [
   
   { path: '', component:UsersComponent},
   { path: ':page', component:UsersComponent},
-  { path: 'user-details/:id', component:UserDetailsComponent }
+  { path: 'user-details/:id', component:UserDetailsComponent },
+  
 
   // { path: 'add', component:AddUserComponent},
   // { path: 'edit-user/:id', component:AddUserComponent}
@@ -26,14 +29,17 @@ const routes : Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+  
   ],
   declarations: [
     UsersComponent,
     // AddUserComponent,
     EditUserComponent,
     UserDetailsComponent,
-    NavbarComponent
+    NavbarComponent,
+    // AutoCompleteFilterComponent,
+    
   ]
 })
 export class UsersModule { }
