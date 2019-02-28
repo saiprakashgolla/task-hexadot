@@ -197,10 +197,18 @@ export class AutoCompleteFilterComponent implements OnInit {
 
   selectCities(event){
     console.log(event);
-    // this.search = event;  
+    // this.search = event;
+    console.log("event", event)
+     
   }
   onDisplay(){
-    this.display = true;
+    // if(this.search){
+      this.display = true;
+    // }else {
+    //   this.display = false;
+   
+    // }
+  
   }
 
 }

@@ -24,7 +24,7 @@ subscription: Subscription;
     // public registerTemplateComponent : RegisterTemplateComponent,
   ) {
     // subscribe to sender component messages
-this.subscription = this.messageService.getMessage().subscribe(message => {
+  this.subscription = this.messageService.getMessage().subscribe(message => {
   this.message = message.text; 
   console.log("message", this.message);
   
