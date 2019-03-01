@@ -24,7 +24,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+// import {GoogleSignInComponent} from 'angular-google-signin';
+import { SocialLoginModule, AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider} from "angular5-social-login";
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
+// Configs 
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider("754380094943139")
+        },
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider("1084286967074-b3bedkt4a7159gd93m8r13a95risi5l3.apps.googleusercontent.com")
+        },
+      ]
+  );
+  return config;
+}
 
 const router : Routes = [
   // { path:'', component: AppComponent},
@@ -51,6 +70,8 @@ const router : Routes = [
     FilterPipe,
     AutoCompleteFilterComponent,
     
+    // GoogleSignInComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -64,7 +85,10 @@ const router : Routes = [
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    SocialLoginModule,
+    AngularFontAwesomeModule
+    
     
   ],
   exports: [
@@ -77,7 +101,12 @@ const router : Routes = [
   providers: [AppService,
     AuthService,
     AuthGuardService,
-    MessageService
+    MessageService,
+
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    }
   ],
   bootstrap: [AppComponent]
 })

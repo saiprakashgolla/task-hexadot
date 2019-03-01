@@ -10,18 +10,24 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   public token:any;
+  public id:any;
+  public profilePic:any;
+  public name:any;
   constructor(
     public router: Router,
   ) { }
 
   ngOnInit() {
-    this.token = localStorage.getItem('token')
-    console.log(this.token);
-  
-    
+    this.token = localStorage.getItem('token');
+    this.profilePic = localStorage.getItem('image');
+    this.name = localStorage.getItem('name')
+    // this.id = localStorage.getItem('ID');
+
+    console.log(this.token);  
   }
   logOut(){
     localStorage.clear();
+    
     this.router.navigate(['/login']);
 
   }

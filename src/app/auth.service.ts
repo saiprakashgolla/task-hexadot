@@ -14,6 +14,7 @@ export class AuthService {
   public isAuthenticated(): boolean {
     // console.log("Token : ", "fdkjbfdsfdkjhbfds");
     const token = this.getToken();
+    const id = 
     console.log("Token : ", token);
     return token ? true : false;
   }
