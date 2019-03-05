@@ -2,11 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppService } from '../app.service';
 import {GoogleSignInSuccess} from 'angular-google-signin';
-import {
-  AuthService,
-  FacebookLoginProvider,
-  GoogleLoginProvider
-} from 'angular5-social-login';
+import {AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angular5-social-login';
 
 
 @Component({

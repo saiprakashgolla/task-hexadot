@@ -18,6 +18,7 @@ export class AddUserComponent implements OnInit {
   public updateName:any;
   public updateJob:any;
   public hide:boolean = true;
+  public token:any;
   public createUser = {
     name:'',
     job:''
@@ -35,6 +36,7 @@ export class AddUserComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.token = localStorage.getItem('token');
     // this.addUser();
   }
   addUser(){
@@ -82,6 +84,12 @@ export class AddUserComponent implements OnInit {
         
       }
     )
+  }
+  logOut(){
+    localStorage.clear();
+    
+    this.router.navigate(['/login']);
+
   }
 
 }
