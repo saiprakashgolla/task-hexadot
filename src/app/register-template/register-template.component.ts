@@ -13,6 +13,7 @@ import { MessageService } from '../message.service';
 export class RegisterTemplateComponent implements OnInit {
 
   public isValid : boolean = false;
+  // public location:any;
 
   @ViewChild('email') email: any;
   @ViewChild('password') password: any;
@@ -22,7 +23,8 @@ export class RegisterTemplateComponent implements OnInit {
     lastName: '',
     email: '',
     password: '',
-    mobileNumber: ''
+    mobileNumber: '',
+    location:''
   }
 
   constructor(
@@ -43,7 +45,7 @@ export class RegisterTemplateComponent implements OnInit {
   }
   onSignup() {
     this.isValid = true;
-    if(this.email.valid && this.password.valid && this.userDetails.email && this.userDetails.password && this.userDetails.firstName && this.userDetails.lastName && this.userDetails.mobileNumber)
+    if(this.email.valid && this.password.valid && this.userDetails.email && this.userDetails.password && this.userDetails.firstName && this.userDetails.lastName && this.userDetails.mobileNumber && this.userDetails.location)
     this.appService.registerData(this.userDetails)
     .subscribe(
       (response)=>{
@@ -64,6 +66,16 @@ export class RegisterTemplateComponent implements OnInit {
     clearMessage(): void {
       // clear message
       this.messageService.clearMessage();
+      }
+
+      getLocation(selectedData: any) {
+        console.log("location address", selectedData);
+        if (selectedData.response) {
+          this.userDetails.location = selectedData.data.description;
+          console.log("location", this.userDetails.location);
+          
+        }
+     
       }
 
 }

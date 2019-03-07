@@ -27,6 +27,7 @@ import {MatInputModule} from '@angular/material/input';
 // import {GoogleSignInComponent} from 'angular-google-signin';
 import { SocialLoginModule, AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider} from "angular5-social-login";
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { Ng4GeoautocompleteModule } from 'ng4-geoautocomplete';
 
 // Configs 
 export function getAuthServiceConfigs() {
@@ -87,9 +88,8 @@ const router : Routes = [
     MatFormFieldModule,
     MatInputModule,
     SocialLoginModule,
-    AngularFontAwesomeModule
-    
-    
+    AngularFontAwesomeModule,
+    Ng4GeoautocompleteModule.forRoot()   
   ],
   exports: [
     MatAutocompleteModule,

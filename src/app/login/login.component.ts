@@ -71,6 +71,7 @@ export class LoginComponent implements OnInit {
         console.log(socialPlatform+" sign in data : " , userData);
         // Now sign-in with userData
         localStorage.setItem('token', userData.token);
+        localStorage.setItem('id', userData.id);
         localStorage.setItem('image', userData.image);
         localStorage.setItem('name', userData.name)
         if(userData.token){

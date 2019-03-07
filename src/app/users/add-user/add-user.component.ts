@@ -86,8 +86,8 @@ export class AddUserComponent implements OnInit {
     )
   }
   logOut(){
-    localStorage.clear();
     
+    localStorage.clear(); 
     this.router.navigate(['/login']);
 
   }
