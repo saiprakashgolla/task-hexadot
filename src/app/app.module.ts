@@ -28,6 +28,8 @@ import {MatInputModule} from '@angular/material/input';
 import { SocialLoginModule, AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider} from "angular5-social-login";
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { Ng4GeoautocompleteModule } from 'ng4-geoautocomplete';
+import { AgmCoreModule } from '@agm/core';
+import { GoogleMapsComponent } from './google-maps/google-maps.component';
 
 // Configs 
 export function getAuthServiceConfigs() {
@@ -49,8 +51,9 @@ export function getAuthServiceConfigs() {
 const router : Routes = [
   // { path:'', component: AppComponent},
   // { path: '', component: AppComponent},
-  { path : '' , redirectTo:'login', pathMatch:'full' },
+  { path : '' , redirectTo:'google-maps', pathMatch:'full' },
   { path : 'login' , component : LoginComponent},
+  { path : 'google-maps' , component : GoogleMapsComponent},
   { path : 'registation/template', component: RegisterTemplateComponent},
   { path : 'registation/reactive', component: RegisterReactiveComponent},
   { path: 'add-user', component:AddUserComponent, canActivate: [AuthGuardService]},
@@ -70,6 +73,7 @@ const router : Routes = [
     HeaderComponent,
     FilterPipe,
     AutoCompleteFilterComponent,
+    GoogleMapsComponent,
     
     // GoogleSignInComponent
     
@@ -89,7 +93,10 @@ const router : Routes = [
     MatInputModule,
     SocialLoginModule,
     AngularFontAwesomeModule,
-    Ng4GeoautocompleteModule.forRoot()   
+    Ng4GeoautocompleteModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAwFj62tdReAuVlxo8yUSFAFcsUOly6SXk'
+    })   
   ],
   exports: [
     MatAutocompleteModule,

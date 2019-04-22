@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AppService } from '../app.service';
 import {GoogleSignInSuccess} from 'angular-google-signin';
 import {AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angular5-social-login';
-
+import { MouseEvent } from '@agm/core';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +11,17 @@ import {AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angular5
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+// google maps zoom level
+zoom: number = 8;
+  
+// initial center position for the map
+lat: number = 51.673858;
+lng: number = 7.815982;
+
   public isValid:boolean = false;
   public token:any;
   public id:any;
+
   
   @ViewChild('email') email: any;
   @ViewChild('password') password: any;

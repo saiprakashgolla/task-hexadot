@@ -53,3 +53,6 @@
     font-size: 17px;
     margin-right: 5px;
 }
+agm-map {
+    height: 300px;
+  }
